@@ -63,3 +63,4 @@ void merge(int *a, int p, int q, int r)
     free(L);
     free(R);
 }
+

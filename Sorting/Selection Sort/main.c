@@ -13,7 +13,7 @@ int main()
     int i;
     int lo = 0;
     int hi = 1000;
-    int *arr = (int *)malloc(SIZE*sizeof(int)*7);
+    int *arr = (int *)malloc(SIZE*sizeof(int));
     if(arr == NULL)
     {
         printf("Buffer Overflow!");
