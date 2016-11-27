@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include "arrand.h"
-#include "insertion.h"
+#include "selection.h"
 
 #define SIZE 100
 typedef long long int lli;
@@ -21,7 +21,7 @@ int main()
     }
     genrate_random_array(arr,lo,hi,SIZE);
     lli start_s=clock();
-    insertion_sort(arr,0,SIZE);
+    selection_sort(arr,0,SIZE);
     lli stop_s=clock();
     print_array(arr,SIZE);
     free (arr);
