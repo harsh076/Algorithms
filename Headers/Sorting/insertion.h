@@ -1,3 +1,5 @@
+void insertion_sort(int *,int,int);
+
 void insertion_sort(int *a, int p, int q)
 {
     int i,j;

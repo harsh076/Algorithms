@@ -1,4 +1,5 @@
 void merge(int *,int,int,int);
+void merge_sort(int *,int,int);
 
 void merge_sort(int *a,int p, int r)
 {
@@ -63,4 +64,3 @@ void merge(int *a, int p, int q, int r)
     free(L);
     free(R);
 }
-

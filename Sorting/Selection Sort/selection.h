@@ -1,3 +1,5 @@
+void selection_sort(int *,int,int);
+
 void selection_sort(int *a, int p, int q)
 {
     int i,j,temp;
