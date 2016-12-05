@@ -4,3 +4,5 @@ void merge(int *,int,int,int);
 void merge_sort(int *,int,int);
 
 void insertion_sort(int *,int,int);
+
+void bubble_sort(int *,int,int);
