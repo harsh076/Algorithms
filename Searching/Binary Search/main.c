@@ -46,7 +46,7 @@ int main()
     if(position != -1)
     printf("\n\nElement %d found at %d",element,position+1);
     else
-    printf("\n\nElement not found!");
+    printf("\n\nElement %d not found!",element);
     printf("\n\nExecution Time : %f sec\n",(stop_s-start_s)/(double)(CLOCKS_PER_SEC));
 
     return 0;
