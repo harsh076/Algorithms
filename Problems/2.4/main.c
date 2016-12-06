@@ -20,23 +20,23 @@ int main()
     }
 
     int i;
-
+    printf("\nOriginal Array");
     for(i=0; i<SIZE; i++)
     {
         arr[i] = rand() % hi + lo;
-
         if(i%10 == 0)
         {
             printf("\n");
         }
         printf("%d\t",arr[i]);
-
     }
 
+    printf("\n");
     lli start_s=clock();
     int inversions = merge_sort(arr,0,SIZE);
     lli stop_s=clock();
 
+    printf("\nSorted Array");
     for(i=0; i<SIZE; i++)
     {
         if(i%10 == 0)
