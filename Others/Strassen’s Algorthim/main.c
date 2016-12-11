@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "matrix.h"
+#include "strassen.h"
 
 #define SIZE 4
 typedef long long int lli;
@@ -58,7 +58,7 @@ int main()
     {
         for(j=0; j<SIZE; j++)
         {
-            printf("%4d",RES[i*SIZE+j]);
+            printf("%d\t",RES[i*SIZE+j]);
         }
         printf("\n");
     }
