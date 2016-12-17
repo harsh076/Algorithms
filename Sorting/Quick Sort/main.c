@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "heapSort.h"
+#include "quick.h"
 
-#define SIZE 100      //Not Working for higher SIZE --> Stack Overlow ? Possibly...
+#define SIZE 100
 typedef long long int lli;
 
 int main()
@@ -24,7 +24,7 @@ int main()
     }
 
     lli start_s=clock();
-    heap_sort(arr,0,SIZE-1);
+    quick_sort(arr,0,SIZE-1);
     lli stop_s=clock();
 
     for(i=0; i<SIZE; i++)
@@ -33,7 +33,7 @@ int main()
         {
             printf("\n");
         }
-        printf("%d\t",arr[i]);
+        printf("%3d\t",arr[i]);
     }
 
     free (arr);
