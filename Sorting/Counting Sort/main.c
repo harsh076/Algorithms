@@ -1,44 +1,40 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "heapSort.h"
+#include "count.h"
 
-#define SIZE 50000      //Not Working for higher SIZE >50000 beacuse of Stack Overlow
-						//Use gcc -Wl,--stack,4194304 main.c to compile with gcc to have stack of 4GB
-						
+#define SIZE 100
 typedef long long int lli;
 
 int main()
 {
     srand(time(NULL));
-
     int *arr = (int *)malloc(sizeof(int)*SIZE);
     if(arr == NULL)
     {
         printf("Buffer Overflow!");
         return 0;
     }
-
     int i;
-    for(i=0; i<SIZE; i++)
+    for(i=1; i<=SIZE; i++)
     {
-        arr[i] = rand() % SIZE - SIZE/2;
+        arr[i] = rand() % SIZE + 1;
     }
 
     lli start_s=clock();
-    heap_sort(arr,0,SIZE-1);
+    int *sorted = count_sort(arr,1,SIZE,SIZE);
     lli stop_s=clock();
 
-    for(i=0; i<SIZE; i++)
+    for(i=1; i<=SIZE; i++)
     {
+        printf("%d\t",sorted[i]);
         if(i%10 == 0)
         {
             printf("\n");
         }
-        printf("%d\t",arr[i]);
     }
-
     free (arr);
+    free (sorted);
     printf("\n\nExecution Time : %f sec\n",(stop_s-start_s)/(double)(CLOCKS_PER_SEC));
 
     return 0;
