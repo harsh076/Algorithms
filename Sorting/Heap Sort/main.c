@@ -3,9 +3,9 @@
 #include <time.h>
 #include "heapSort.h"
 
-#define SIZE 50000      //Not Working for higher SIZE >50000 beacuse of Stack Overlow
-						//Use gcc -Wl,--stack,4194304 main.c to compile with gcc to have stack of 4GB
-						
+#define SIZE 100    //Not Working for higher SIZE >50000 beacuse of Stack Overlow
+					//Use gcc -Wl,--stack,4194304 main.c to compile with gcc to have stack of 4GB
+					
 typedef long long int lli;
 
 int main()
