@@ -15,3 +15,4 @@ void heap_sort(int *,int,int);
 void build_max_heap(int *,int,int);
 void max_heapify(int *,int,int,int);
 
+int* count_sort(int *,int,int,int);

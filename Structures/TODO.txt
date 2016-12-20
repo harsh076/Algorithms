@@ -1,2 +1,21 @@
-1.Heap
-2.Array
+1.Linked List [Single, Double, Circular] -> list.h, list_double.h, list_circular.h
+
+	a. Is List empty?
+	b. Start Node (Address)
+	c. End Node (Address)
+	d. Insertion at nth position
+	e. Deletion from nth position
+	f. Searching
+	g. Modifying node at nth position
+	h. Printing the list
+	i. Reversal
+
+2.Stack -> Array Implementation -> stack.h
+
+	a. Push
+	b. Pop
+
+3.Queue -> Array Implementation -> queue.h
+
+	a. Enqueue
+	b. Dequeue
