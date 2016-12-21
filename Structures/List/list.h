@@ -1,31 +1,30 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef enum {false=0, true=1} bool;
 typedef struct node
 {
     int data;
     struct node* next;
 }node;
 
-bool isEmpty(node*);
+int empty(node*);
 node* insert(node*,int,int);
 void print(node*);
 int search(node*,int);
 node* delete(node*,int);
 node* accsess(node*,int);
 
-bool isEmpty(node* head)
+int empty(node* head)
 {
     if(head == NULL)
-    return true;
+    return 1;
     else
-    return false;
+    return 0;
 }
 
 node* insert(node* head, int data, int pos)
 {
-    if(isEmpty(head))
+    if(empty(head))
     {
         node* temp = (node*)malloc(sizeof(node));
         temp->data = data;
