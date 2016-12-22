@@ -1,20 +1,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct list
+typedef struct dlist
 {
     int data;
-    struct list* next;
-}list;
+    struct dlist* prev;
+    struct dlist* next;
+}dlist;
 
-int list_empty(list*);
-list* list_insert(list*,int,int);
-void list_print(list*);
-int list_search(list*,int);
-list* list_delete(list*,int);
-list* list_accsess(list*,int);
+int dlist_empty(dlist*);
+dlist* dlist_insert(dlist*,int,int);
+void dlist_print(dlist*);
+int dlist_search(dlist*,int);
+dlist* dlist_delete(dlist*,int);
+dlist* dlist_accsess(dlist*,int);
 
-int list_empty(list* head)
+int dlist_empty(dlist* head)
 {
     if(head == NULL)
     return 1;
@@ -22,7 +23,7 @@ int list_empty(list* head)
     return 0;
 }
 
-list* list_insert(list* head, int data, int pos)
+dlist* dlist_insert(dlist* head, int data, int pos)
 {
     if(pos<1)
     {
@@ -31,10 +32,11 @@ list* list_insert(list* head, int data, int pos)
     }
     else
     {
-        if(list_empty(head))
+        if(dlist_empty(head))
         {
-            list* temp = (list*)malloc(sizeof(list));
+            dlist* temp = (dlist*)malloc(sizeof(dlist));
             temp->data = data;
+            temp->prev = NULL;
             temp->next = NULL;
             head = temp;
         }
@@ -42,18 +44,20 @@ list* list_insert(list* head, int data, int pos)
         {
             if(pos == 1)
             {
-                list* temp = (list*)malloc(sizeof(list));
+                dlist* temp = (dlist*)malloc(sizeof(dlist));
                 temp->data = data;
+                temp->prev = NULL;
                 temp->next = head;
                 head = temp;
             }
             else
             {
-                list* temp = (list*)malloc(sizeof(list));
+                dlist* temp = (dlist*)malloc(sizeof(dlist));
                 temp->data = data;
+                temp->prev = NULL;
                 temp->next = NULL;
                 int i;
-                list* temp1 = head;
+                dlist* temp1 = head;
                 for(i=1; i<pos-1; i++)
                 {
                     temp1 = temp1->next;
@@ -64,7 +68,10 @@ list* list_insert(list* head, int data, int pos)
                         return head;
                     }
                 }
+                temp->prev = temp1;
                 temp->next = temp1->next;
+                if(temp1->next != NULL)
+                temp1->next->prev = temp;
                 temp1->next = temp;
             }
         }
@@ -72,7 +79,7 @@ list* list_insert(list* head, int data, int pos)
     return head;
 }
 
-void list_print(list* head)
+void dlist_print(dlist* head)
 {
     int i=0;
     printf("\n");
@@ -88,7 +95,7 @@ void list_print(list* head)
     }
 }
 
-int list_search(list* head, int val)
+int dlist_search(dlist* head, int val)
 {
     int i = 1;
     while(head != NULL)
@@ -106,40 +113,40 @@ int list_search(list* head, int val)
     return -1;
 }
 
-list* list_delete(list* head, int pos)
+dlist* list_delete(dlist* head, int pos)
 {
     if(pos == 1)
     {
-        if(list_empty(head))
+        if(dlist_empty(head))
         {
             printf("\nIncorrect Input!");
             return head;
         }
-        list* temp = head;
+        dlist* temp = head;
         head = head->next;
         free(temp);
     }
     else if(pos>1)
     {
         int i;
-        list* temp = head;
-        for(i=1; i<pos-1; i++)
+        dlist* temp = head;
+        for(i=1; i<pos; i++)
         {
             temp = temp->next;
-            if(temp->next == NULL)
+            if(temp == NULL)
             {
                 printf("\nIncorrect Input!");
                 return head;
             }
         }
-        list* del = temp->next;
-        temp->next = temp->next->next;
-        free(del);
+        temp->prev->next = temp->next;
+        temp->next->prev = temp->prev;
+        free(temp);
     }
     return head;
 }
 
-list* list_accsess(list* head,int pos)
+dlist* dlist_access(dlist* head,int pos)
 {
     if(pos<1)
     {
@@ -152,7 +159,7 @@ list* list_accsess(list* head,int pos)
     }
     else
     {
-        list* temp = head;
+        dlist* temp = head;
         int i = 1;
         while (i<pos)
         {

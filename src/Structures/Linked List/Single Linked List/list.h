@@ -60,6 +60,7 @@ list* list_insert(list* head, int data, int pos)
                     if(temp1 == NULL)
                     {
                         printf("\nIncorrect Input!");
+                        free(temp);
                         return head;
                     }
                 }
@@ -157,6 +158,11 @@ list* list_accsess(list* head,int pos)
         {
             ++i;
             temp = temp->next;
+            if(temp == NULL)
+            {
+                printf("\nIncorrect Input!");
+                return NULL;
+            }
         }
         return temp;
     }
